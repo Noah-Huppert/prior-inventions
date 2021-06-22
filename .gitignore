@@ -1,5 +1,6 @@
 # Project
 *.md
+!README.md
 config.ts
 
 # NodeJs / Typescript
