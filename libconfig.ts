@@ -12,6 +12,11 @@ export default interface Config {
      * Introductory paragraph which will be displayed before the prior works list.
      */
     description: string,
+
+    /**
+     * Text which will be inserted at the very top of the generated markdown file.
+     */
+    markdownHeader: string,
   },
   
   /**
@@ -66,6 +71,11 @@ export interface RepoOverride {
    * If present overrides the project's description.
    */
   description?: string,
+
+  /**
+   * If present overrides the project's link. If set to null then removes a project's link.
+   */
+  link?: string|null,
 }
 
 /**

@@ -77,6 +77,8 @@ function prettifySlug(slug: string): string {
 
 async function main(): Promise<void> {
   // Authenticate with GitHub
+  console.log("Fetching projects from GitHub");
+  
   const gh = new GitHub({
     username: CFG.github.username,
     token: CFG.github.token,
@@ -142,9 +144,14 @@ async function main(): Promise<void> {
 
     if (repoOverrideSlugs.indexOf(project.slug) !== -1) {
       const override = repoOverrides[project.slug];
-      ["name", "description"].forEach((key) => {
+      ["name", "description", "link"].forEach((key) => {
         if (override[key] !== undefined) {
           project[key] = override[key];
+        }
+
+        if (key === "link" && override[key] === null) {
+          // Special case where setting link override to null actually makes it undefined, this is documented for the user in the README.md
+          project[key] = undefined;
         }
       });
     }
@@ -153,6 +160,8 @@ async function main(): Promise<void> {
   }));
 
   projectsList = projectsList.filter((p) => p !== undefined);
+
+  console.log(`Loaded ${projectsList.length} project(s) from GitHub`);
 
   // Load manual projects
   if (CFG.projects !== undefined) {
@@ -214,12 +223,16 @@ async function main(): Promise<void> {
   const projectsTxt = projectsList.map((project) => {
     return `- **${wrapMdLink(project.name, project.link)}**: ${project.description}`;
   });
-  const outTxt = `# Prior Inventions
+  const outTxt = `${CFG.document.markdownHeader}
+
+# Prior Inventions
 ${CFG.document.description}
 
 ${projectsTxt.join("\n")}`;
 
   await fs.writeFile(CFG.document.file, outTxt);
+
+  console.log(`Wrote ${projectsList.length} project(s) to ${CFG.document.file}`);
 }
 
 main().then(() => {
