@@ -23,3 +23,9 @@ This application is written in Typescript for NodeJS.
   yarn run-app
   ```
   The resulting markdown file will be overwritten at the path you specified in `config.ts` `document.file` (default: `prior-inventions.md`)
+
+This output Markdown file could be transformed into a PDF using Pandoc for example:
+
+```
+pandoc -o prior-inventions.pdf prior-inventions.md
+```
