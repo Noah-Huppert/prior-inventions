@@ -1,6 +1,7 @@
 # Project
 *.md
 !README.md
+*.pdf
 config.ts
 
 # NodeJs / Typescript
