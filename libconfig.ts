@@ -72,7 +72,18 @@ export interface RepoOverride {
  * Specifies a project manually, instead of gathering information from GitHub.
  */
 interface ManualProject {
-  link: string,
+  /**
+   * A link for the project, optional.
+   */
+  link?: string,
+
+  /**
+   * Human readable name of project.
+   */
   name: string,
+
+  /**
+   * Text describing all relevant aspects of the project.
+   */
   description: string,
 }

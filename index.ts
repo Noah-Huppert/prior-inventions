@@ -17,7 +17,7 @@ interface Project {
   /**
    * Full link to project's homepage.
    */
-  link: string,
+  link?: string,
 
   /**
    * Unique slug identifying owner of project.
@@ -43,6 +43,20 @@ interface Project {
    * Short description of project.
    */
   description: string,
+}
+
+/**
+ * Wrap a piece of text in a Markdown [text](url) style link. If link is undefined don't wrap.
+ * @param text Text to show for link.
+ * @param link Link to point to.
+ * @returns Wrapped text in a link, or just the plain text if the link was undefined.
+ */
+function wrapMdLink(text: string, link?: string): string {
+  if (link !== undefined) {
+    return `[${text}](${link})`;
+  }
+
+  return text;
 }
 
 /**
@@ -198,7 +212,7 @@ async function main(): Promise<void> {
     return -1;
   });
   const projectsTxt = projectsList.map((project) => {
-    return `- **${project.name}**: ${project.description}`;
+    return `- **${wrapMdLink(project.name, project.link)}**: ${project.description}`;
   });
   const outTxt = `# Prior Inventions
 ${CFG.document.description}
