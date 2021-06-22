@@ -1,0 +1,8 @@
+# Project
+*.md
+config.ts
+
+# NodeJs / Typescript
+node_modules/
+dist/
+*.log
