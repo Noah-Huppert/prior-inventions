@@ -21,7 +21,7 @@ This application is written in Typescript for NodeJS.
   - `github`: GitHub configuration
     - `username`: Login username
     - `token`: API authentication token, requires the `public_repo`, and `read:org` scopes
-    - `organizations`: Array of tuples which configuration projects you want to include from external organizations. The first tuple value is the organization's username / slug. The second tuple value is an array of repository slugs from the organization which you wish to include.
+    - `organizations`: Array of tuples which configure projects you want to include from external organizations. The first tuple value is the organization's username / slug. The second tuple value is an array of repository slugs from the organization which you wish to include.
     - `repoOverrides`: Array of override information. Allows you to manually override information about repositories retrieved using the GitHub API. Each array item is an object with a `slug` key which specifies the GitHub repository to override. This should be in the format `<owner username>/<repo slug>`. Then the `name`, `description`, and `link` keys can optionally be provided to override a value. The `link` override key can be set to `null` in order to remove a link from a project.
   - `projects`: Manually specified projects. Each project should be an object with a `name`, `description`, and `link` (optional) key.
 2. Install NodeJS dependencies:

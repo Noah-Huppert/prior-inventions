@@ -95,6 +95,7 @@ async function main(): Promise<void> {
     allowedExternRepos[o[0]] = o[1];
   });
 
+  let actualOverridenNum = 0;
   let repoOverrides: { [key: string]: RepoOverride } = {};
   let repoOverrideSlugs: string[] = [];
   
@@ -143,6 +144,8 @@ async function main(): Promise<void> {
     };
 
     if (repoOverrideSlugs.indexOf(project.slug) !== -1) {
+      actualOverridenNum += 1;
+      
       const override = repoOverrides[project.slug];
       ["name", "description", "link"].forEach((key) => {
         if (override[key] !== undefined) {
@@ -161,6 +164,10 @@ async function main(): Promise<void> {
 
   projectsList = projectsList.filter((p) => p !== undefined);
 
+  if (actualOverridenNum > 0) {
+    console.log(`Applied override values to ${actualOverridenNum} project(s)`);
+  }
+  
   console.log(`Loaded ${projectsList.length} project(s) from GitHub`);
 
   // Load manual projects
@@ -176,6 +183,7 @@ async function main(): Promise<void> {
         description: p.description,
       };
     }));
+    console.log(`Loaded ${CFG.projects.length} handwritten project(s)`);
   }
 
 
