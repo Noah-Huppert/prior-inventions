@@ -4,10 +4,10 @@ const CFG: Config = {
   document: {
     file: "prior-inventions.md",x
     description: "A list of all inventions which includes every idea ever thought by a person is not possible to generate. However this document includes as comprehensive of a list as possible.",
-        markdownHeader: `---
+    markdownHeader: `---
 geometry: margin=0.5in
 ---
-Noah Huppert  
+Your Name  
 ${new Date().toLocaleDateString("en-US")}`,
   },
   github: {
