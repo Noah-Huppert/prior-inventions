@@ -29,12 +29,12 @@ export default interface Config {
     username: string,
 
     /**
-     * GitHub API personal access token. Requires the `repo:status`, `public_repo`, `read:org`, and `read:user` scopes.
+     * GitHub API personal access token. Requires the `public_repo` and `read:org` scopes.
      */
     token: string,
 
     /**
-     * Configures which organizations and projects from those organizations should be incldued. If left empty no projects from organizations will be included.
+     * Configures which organizations and projects from those organizations should be included. If left empty no projects from organizations will be included.
      */
     organizations: OrgPair[],
 
