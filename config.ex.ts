@@ -28,7 +28,7 @@ ${new Date().toLocaleDateString("en-US")}`,
   },
   projects: [
     {
-      link: "link to project",
+      link: "link to project, optional",
       name: "User Friendly Project Name",
       description: "Short description of project",
     }
