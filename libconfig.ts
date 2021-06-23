@@ -43,6 +43,10 @@ export default interface Config {
      */
     repoOverrides?: RepoOverride[],
   },
+
+  /**
+   * Projects can be manually specified by including them in this array. These will be displayed in addition to projects retrieved from GitHub.
+   */
   projects?: ManualProject[],
 }
 
